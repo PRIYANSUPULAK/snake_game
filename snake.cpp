@@ -154,6 +154,7 @@ class Snake{
 				else{
 					cout<<"GAME OVER!!!"<<endl;
 					cout<<"Press any key to start"<<endl;
+					cout<<"Your Score is: "<<size-1<<endl;
 				getch();
 				state=1;
 				size=1;
@@ -179,7 +180,9 @@ class Snake{
 				break;		
 			}
 			if(selfCollision())
-			state=0;
+			{		
+				state=0;
+			}
 			
 			//collision with fruit
 			if(fruit.GetX()==cell[0]->GetX() && fruit.GetY()==cell[0]->GetY())
@@ -192,7 +195,7 @@ class Snake{
 			for(int i=0;i<size;i++)
 			cell[i]->Draw();
 			SetConsoleTextAttribute(console,242);
-			fruit.Draw('+');
+			fruit.Draw('$');
 			SetConsoleTextAttribute(console,252);
 
 			//Debug();
