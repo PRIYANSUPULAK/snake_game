@@ -10,7 +10,7 @@
 #define MAXFRAMEY 29
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
-
+string s;
 HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 COORD CursorPosition;
 
@@ -155,7 +155,38 @@ class Snake{
 					cout<<"GAME OVER!!!"<<endl;
 					cout<<"Press any key to start"<<endl;
 					cout<<"Your Score is: "<<size-1<<endl;
-				getch();
+		//				ofstream fout;
+  		
+  		//	fout.open("myfile.txt",ios::app);
+  		//	fout<<s+"\n";
+  		//	fout.close();
+  		
+  		
+			/*string line;
+			system("cls");
+  			ifstream fin;
+  			int offset=0;
+  			cout<<"ENTER YOUR USERNAME"<<endl;
+  			cin>>q;
+  			cout<<"ENTER YOUR PASSWORD"<<endl;
+  			cin>>w;
+  			q=q+w;
+  			fin.open("myfile.txt");
+  			if(fin.is_open())
+  			{
+  				while(!fin.eof())
+  				{
+  					getline(fin,line);
+					if(line.find(q,0)!=-1)
+					{
+						cout<<"you are logged in"<<endl;
+						offset=1;
+						break;
+						  }  	
+				}  				
+			}
+  			fin.close();
+			*/	getch();
 				state=1;
 				size=1;
 				}
@@ -221,7 +252,7 @@ int main()
 	cout<<"1.REGISTER"<<endl;
 	cout<<"2.LOGIN"<<endl;
 	cout<<"3.EXIT"<<endl;
-	string s,p,q,w;
+	string p,q,w;
 	int x;
 	cin>>x;
 	if(x==1){
@@ -233,6 +264,27 @@ int main()
   			cout<<"ENTER YOUR PASSWORD"<<endl;
   			cin>>p;
   			s=s+p;
+  			ifstream fin;
+  			string line;
+  			int offset=0;
+  			fin.open("myfile.txt");
+  			if(fin.is_open())
+  			{
+  				while(!fin.eof())
+  				{
+  					getline(fin,line);
+					if(line.find(s,0)!=-1)
+					{
+						cout<<"sorry! this username is not available"<<endl;
+						cout<<"Press any key to go to Home Page"<<endl;
+						int kk;
+						cin>>kk;
+						goto label;
+						break;
+						  }  	
+				} 				
+			}
+  			fin.close();
   			fout.open("myfile.txt",ios::app);
   			fout<<s+"\n";
   			fout.close();
@@ -274,7 +326,11 @@ int main()
   			fin.close();				
 	}	
 	else{
-		cout<<"Please Select a valid Choice"<<endl;
+		cout<<"press 3 to confirm exit or anyother key to Register or Login"<<endl;
+		int p;
+		cin>>p;
+		if(p==3)
+		return 0;
 		goto label;
 	}
 	setcursor(0,0);
