@@ -277,11 +277,11 @@ int main()
 					{
 						cout<<"sorry! this username is not available"<<endl;
 						cout<<"Press any key to go to Home Page"<<endl;
-						int kk;
+						char kk;
 						cin>>kk;
 						goto label;
-						break;
-						  }  	
+						//break;
+					}  	
 				} 				
 			}
   			fin.close();
